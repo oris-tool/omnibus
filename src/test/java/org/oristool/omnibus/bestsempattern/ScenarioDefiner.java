@@ -89,6 +89,29 @@ public class ScenarioDefiner {
     public static BigDecimal timeStep = BigDecimal.valueOf(0.1);
     public static BigInteger semPeriod = new BigInteger("110");
 
+    public static void updateFields() {
+        maxQueueSizes =
+                roadLenghts.stream().map(rl ->
+                        rl.divide(carSpace, 0, RoundingMode.FLOOR).toBigInteger()
+                ).collect(Collectors.toList());
+
+        maxVehicleSpeeds =
+                maxVehicleSpeedsKmh.stream().map(skmh ->
+                        skmh.divide(new BigDecimal("3.6"), 3, RoundingMode.FLOOR)
+                ).collect(Collectors.toList());
+
+        mus = maxVehicleSpeeds.stream().map(mvs ->
+                mvs.divide(crossroadLenght, 3, RoundingMode.FLOOR)
+        ).collect(Collectors.toList());
+
+        mus_mmkk = Arrays.asList(
+                maxVehicleSpeeds.get(0).divide(carSpace.multiply(new BigDecimal(maxQueueSizes.get(0))), 3, RoundingMode.FLOOR),
+                maxVehicleSpeeds.get(1).divide(carSpace.multiply(new BigDecimal(maxQueueSizes.get(1))), 3, RoundingMode.FLOOR),
+                maxVehicleSpeeds.get(2).divide(carSpace.multiply(new BigDecimal(maxQueueSizes.get(2))), 3, RoundingMode.FLOOR)
+        );
+
+    }
+
     public static CarFlow[] createScenario() {
 
         // DEFINIZIONE E ANALISI ATTRAVERSAMENTO TRAMVIARIO

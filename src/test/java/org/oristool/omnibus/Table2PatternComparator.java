@@ -45,14 +45,15 @@ public class Table2PatternComparator {
                 new BigDecimal("50")
         );
 
+        ScenarioDefiner.updateFields();
+
         Date start = new Date();
 
         File resultsFolder = new File("results");
         if (!resultsFolder.exists())
             resultsFolder.mkdir();
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
-        String executionFolderName = dateFormat.format(new Date()) + "_omnibus";
+        String executionFolderName = "table2_omnibus";
         File executionFolder = new File("results/" + executionFolderName);
         executionFolder.mkdir();
 
