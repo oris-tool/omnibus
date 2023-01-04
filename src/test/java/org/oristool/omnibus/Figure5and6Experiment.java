@@ -37,16 +37,25 @@ public class Figure5and6Experiment {
         // DEFINIZIONE OBSTACLES
 
         TramCrossing bin1 = new TramCrossing(
-                PetriNetTramTrackBuilder.getInstance("bin1", Config.periodTime, Config.phaseTime, Config.delayEFTime,
-                        Config.delayLFTime, Config.crosslightAntTime,
-                        Config.leavingEFTime, Config.leavingLFTime));
+                PetriNetTramTrackBuilder.getInstance("bin1",
+                        BigInteger.valueOf(220),
+                        BigInteger.valueOf(0),
+                        BigInteger.ZERO,
+                        BigInteger.valueOf(120),
+                        BigInteger.valueOf(5),
+                        BigInteger.valueOf(6),
+                        BigInteger.valueOf(14)));
         bin1.analyze(new ParallelGreenProbabilityVisitor(), Config.timeStep);
 
         TramCrossing bin2 = new TramCrossing(
-                PetriNetTramTrackBuilder.getInstance("bin2", Config.periodTime2, Config.phaseTime2,
-                        Config.delayEFTime2,
-                        Config.delayLFTime2, Config.crosslightAntTime2,
-                        Config.leavingEFTime2, Config.leavingLFTime2));
+                PetriNetTramTrackBuilder.getInstance("bin2",
+                        BigInteger.valueOf(220),
+                        BigInteger.valueOf(110),
+                        BigInteger.ZERO,
+                        BigInteger.valueOf(40),
+                        BigInteger.valueOf(5),
+                        BigInteger.valueOf(6),
+                        BigInteger.valueOf(14)));
         bin2.analyze(new ParallelGreenProbabilityVisitor(), Config.timeStep);
 
         // DEFINIZIONE CODA MMKK
@@ -190,9 +199,26 @@ public class Figure5and6Experiment {
             entries.add(String.valueOf(mmkkExpectedCarsAlongTimeSteadyState[ts]));
             CSV_IOUtils.writeLine(carsDataWriter, entries);
         }
+        
+        
+        String fileNameEmpty = "results/from-empty-f5_road_lenght= " + Config.roadLenght + "m lambda= " + Config.lambda +
+                " maxVehicleSpeedKmh= " + Config.maxVehicleSpeedKmh + "kmph _ data";
+
+        CSVWriter emptyCarsDataWriter = CSV_IOUtils.getWriterInstance(fileNameEmpty);
+
+        CSV_IOUtils.writeLine(emptyCarsDataWriter, cdw_indices);
+        
+        for (int ts = 0; ts < mm1kExpectedCarsAlongTimeTransient.length; ts++) {
+            ArrayList<String> entries = new ArrayList<>();
+            entries.add(String.valueOf(ts));
+            entries.add(String.valueOf(mm1kExpectedCarsAlongTimeTransient[ts]));
+            entries.add(String.valueOf(mmkkExpectedCarsAlongTimeTransient[ts]));
+            CSV_IOUtils.writeLine(emptyCarsDataWriter, entries);
+        }
 
         try {
             Objects.requireNonNull(carsDataWriter).close();
+            Objects.requireNonNull(emptyCarsDataWriter).close();
         } catch (IOException e) {
             e.printStackTrace();
         }
