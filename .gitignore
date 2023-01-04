@@ -1,0 +1,7 @@
+/target/
+*.class
+*.png
+*.csv
+*.settings
+*.classpath
+*.project
