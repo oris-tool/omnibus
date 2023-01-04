@@ -15,23 +15,23 @@ public class Table3Generator {
 
     public static void main(String[] args) throws IOException {
 
-        CSVReader table3omnibusReader = CSV_IOUtils.getReaderInstance(
+        CSVReader table2omnibusReader = CSV_IOUtils.getReaderInstance(
                 "results/table3_omnibus/table3_omnibus"
         );
         Map<String, Double> omnibusResults = new HashMap<>();
-        for (String[] strings : table3omnibusReader.readAll()) {
+        for (String[] strings : table2omnibusReader.readAll()) {
             omnibusResults.put(strings[0], Double.valueOf(strings[1]));
         }
-        table3omnibusReader.close();
+        table2omnibusReader.close();
 
-        CSVReader table3sumoReader = CSV_IOUtils.getReaderInstance(
+        CSVReader table2sumoReader = CSV_IOUtils.getReaderInstance(
                 "results/table3_sumo/table3_sumo"
         );
         Map<String, Double> sumoResults = new HashMap<>();
-        for (String[] strings : table3sumoReader.readAll()) {
+        for (String[] strings : table2sumoReader.readAll()) {
             sumoResults.put(strings[1], Double.valueOf(strings[2]));
         }
-        table3sumoReader.close();
+        table2sumoReader.close();
 
         List<Entry<String, Double>> omnibusList = new ArrayList<>(omnibusResults.entrySet());
         omnibusList.sort(Entry.comparingByValue());
@@ -40,14 +40,14 @@ public class Table3Generator {
         sumoList.sort(Entry.comparingByValue());
 
 
-        CSVWriter table3Writer = CSV_IOUtils.getWriterInstance("results/table3");
+        CSVWriter table2Writer = CSV_IOUtils.getWriterInstance("results/table2");
 
-        table3Writer.writeNext(List.of("Pattern", "Omnibus Reward", "Omnibus Rank", "Sumo Reward", "Sumo Rank").toArray(new String[0]));
+        table2Writer.writeNext(List.of("Pattern", "Omnibus Reward", "Omnibus Rank", "Sumo Reward", "Sumo Rank").toArray(new String[0]));
 
         for (int i = 0; i < omnibusList.size(); i++) {
             for (int j = 0; j < sumoList.size(); j++) {
                 if (omnibusList.get(i).getKey().equals(sumoList.get(j).getKey())) {
-                    table3Writer.writeNext(List.of(
+                    table2Writer.writeNext(List.of(
                             omnibusList.get(i).getKey(),
                             omnibusList.get(i).getValue().toString(),
                             Integer.toString(i+1),
@@ -59,6 +59,6 @@ public class Table3Generator {
             }
         }
 
-        table3Writer.close();
+        table2Writer.close();
     }
 }

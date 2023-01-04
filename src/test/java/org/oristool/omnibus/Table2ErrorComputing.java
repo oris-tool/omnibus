@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 
-public class Table1ErrorComputing {
+public class Table2ErrorComputing {
 
     private static final String[] roadLengths = {"50", "150", "450"};
     private static final String[] lambdas = {"0.5", "0.9", "1.3"};

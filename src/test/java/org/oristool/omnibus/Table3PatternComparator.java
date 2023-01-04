@@ -34,9 +34,9 @@ public class Table3PatternComparator {
         );
 
         ScenarioDefiner.arrivalRates = Arrays.asList(
+                BigDecimal.valueOf(0.05),
                 BigDecimal.valueOf(0.1),
-                BigDecimal.valueOf(0.2),
-                BigDecimal.valueOf(0.3)
+                BigDecimal.valueOf(0.15)
         );
 
         ScenarioDefiner.maxVehicleSpeedsKmh = Arrays.asList(

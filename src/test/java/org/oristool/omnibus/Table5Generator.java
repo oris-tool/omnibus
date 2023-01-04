@@ -11,27 +11,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class Table2Generator {
+public class Table5Generator {
 
     public static void main(String[] args) throws IOException {
 
-        CSVReader table2omnibusReader = CSV_IOUtils.getReaderInstance(
-                "results/table2_omnibus/table2_omnibus"
+        CSVReader table4omnibusReader = CSV_IOUtils.getReaderInstance(
+                "results/table5_omnibus/table5_omnibus"
         );
         Map<String, Double> omnibusResults = new HashMap<>();
-        for (String[] strings : table2omnibusReader.readAll()) {
+        for (String[] strings : table4omnibusReader.readAll()) {
             omnibusResults.put(strings[0], Double.valueOf(strings[1]));
         }
-        table2omnibusReader.close();
+        table4omnibusReader.close();
 
-        CSVReader table2sumoReader = CSV_IOUtils.getReaderInstance(
-                "results/table2_sumo/table2_sumo"
+        CSVReader table4sumoReader = CSV_IOUtils.getReaderInstance(
+                "results/table5_sumo/table5_sumo"
         );
         Map<String, Double> sumoResults = new HashMap<>();
-        for (String[] strings : table2sumoReader.readAll()) {
+        for (String[] strings : table4sumoReader.readAll()) {
             sumoResults.put(strings[1], Double.valueOf(strings[2]));
         }
-        table2sumoReader.close();
+        table4sumoReader.close();
 
         List<Entry<String, Double>> omnibusList = new ArrayList<>(omnibusResults.entrySet());
         omnibusList.sort(Entry.comparingByValue());
@@ -40,14 +40,14 @@ public class Table2Generator {
         sumoList.sort(Entry.comparingByValue());
 
 
-        CSVWriter table2Writer = CSV_IOUtils.getWriterInstance("results/table2");
+        CSVWriter table4Writer = CSV_IOUtils.getWriterInstance("results/table4");
 
-        table2Writer.writeNext(List.of("Pattern", "Omnibus Reward", "Omnibus Rank", "Sumo Reward", "Sumo Rank").toArray(new String[0]));
+        table4Writer.writeNext(List.of("Pattern", "Omnibus Reward", "Omnibus Rank", "Sumo Reward", "Sumo Rank").toArray(new String[0]));
 
         for (int i = 0; i < omnibusList.size(); i++) {
             for (int j = 0; j < sumoList.size(); j++) {
                 if (omnibusList.get(i).getKey().equals(sumoList.get(j).getKey())) {
-                    table2Writer.writeNext(List.of(
+                    table4Writer.writeNext(List.of(
                             omnibusList.get(i).getKey(),
                             omnibusList.get(i).getValue().toString(),
                             Integer.toString(i+1),
@@ -59,6 +59,6 @@ public class Table2Generator {
             }
         }
 
-        table2Writer.close();
+        table4Writer.close();
     }
 }

@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Table1SuiteTestExperiment {
+public class Table2SuiteTestExperiment {
 
     private static final String[] roadLengths = {"50", "150", "450"};
     private static final String[] lambdas = {"0.5", "0.9", "1.3"};

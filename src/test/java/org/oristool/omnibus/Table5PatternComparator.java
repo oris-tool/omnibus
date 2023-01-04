@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class Table2PatternComparator {
+public class Table5PatternComparator {
 
     private static List<Integer> semSlotDurations = Arrays.asList(15, 25, 35);
     private static int redTime = 5;
@@ -40,9 +40,9 @@ public class Table2PatternComparator {
         );
 
         ScenarioDefiner.maxVehicleSpeedsKmh = Arrays.asList(
-                new BigDecimal("50"),
-                new BigDecimal("50"),
-                new BigDecimal("50")
+                new BigDecimal("30"),
+                new BigDecimal("30"),
+                new BigDecimal("30")
         );
 
         ScenarioDefiner.updateFields();
@@ -53,7 +53,7 @@ public class Table2PatternComparator {
         if (!resultsFolder.exists())
             resultsFolder.mkdir();
 
-        String executionFolderName = "table2_omnibus";
+        String executionFolderName = "table5_omnibus";
         File executionFolder = new File("results/" + executionFolderName);
         executionFolder.mkdir();
 
@@ -81,6 +81,7 @@ public class Table2PatternComparator {
         SemPatternGenerator
                 .generateAllPatternWithGreenSlotSets(vehicleFlows, ScenarioDefiner.semPeriod.intValue(), redTime)
                 .forEach(sp -> patternsToAnalyze.add(sp.getSchedule()));
+        // inserisce pattern "avvelenati" per terminare i processi
         for (int i = 0; i < threadPoolSize; i++) {
             patternsToAnalyze.add("%%%%");
         }

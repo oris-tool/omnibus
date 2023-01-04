@@ -34,15 +34,15 @@ public class Table4PatternComparator {
         );
 
         ScenarioDefiner.arrivalRates = Arrays.asList(
-                BigDecimal.valueOf(0.05),
                 BigDecimal.valueOf(0.1),
-                BigDecimal.valueOf(0.15)
+                BigDecimal.valueOf(0.2),
+                BigDecimal.valueOf(0.3)
         );
 
         ScenarioDefiner.maxVehicleSpeedsKmh = Arrays.asList(
-                new BigDecimal("30"),
-                new BigDecimal("30"),
-                new BigDecimal("30")
+                new BigDecimal("50"),
+                new BigDecimal("50"),
+                new BigDecimal("50")
         );
 
         ScenarioDefiner.updateFields();
@@ -81,7 +81,6 @@ public class Table4PatternComparator {
         SemPatternGenerator
                 .generateAllPatternWithGreenSlotSets(vehicleFlows, ScenarioDefiner.semPeriod.intValue(), redTime)
                 .forEach(sp -> patternsToAnalyze.add(sp.getSchedule()));
-        // inserisce pattern "avvelenati" per terminare i processi
         for (int i = 0; i < threadPoolSize; i++) {
             patternsToAnalyze.add("%%%%");
         }
