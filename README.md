@@ -4,7 +4,7 @@ This repository provides Omnibus, a Java library implementing an efficient compo
 
 The approach is presented in the paper titled "An efficient compositional approach to the derivation of optimal semaphore schedules for multimodal urban intersections", authored by Nicola Bertocci, Laura Carnevali, Leonardo Scommegna, and Enrico Vicario, currently submitted to Transportation Research Part C: Emerging Technologies.
 
-The approach combines a microscopic microscopic model of tram traffic and a macroscopic model of road transport flows:
+The approach combines a microscopic model of tram traffic and a macroscopic model of road transport flows:
 - The microscopic model of tram traffic is defined in terms of Stochastic Time Petri Nets (STPNs) capturing periodic tram departures as well as bounded delays and travel times with general (i.e., non-Exponential) distribution, thus being open to represent arrival and travel processes estimated from operational data, and it is analyzed to derive the transient probability that the intersection is available for road vehicle.
 - The macroscopic model of road transport flows is defined in terms of finite-capacity vacation queues with general vacation times determined by the intersection availability, achieving efficiecy in the evaluation of the expected queue size over time.
 
