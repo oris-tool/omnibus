@@ -2,7 +2,7 @@
 
 This repository provides Omnibus, a Java library implementing an efficient compositional approach to derive optimal semaphore schedules for multimodal urban intersections among road traffic flows and tram lines with right of way, minimizing the expected percentage of queued vehicles of each flow.
 
-The approach is presented in the paper titled "Compositional analysis of multimodal urban intersections for efficient derivation of optimal semaphore schedules", authored by Nicola Bertocci, Laura Carnevali, Leonardo Scommegna, and Enrico Vicario, currently submitted to Transportation Research Part C: Emerging Technologies.
+The approach is presented in the paper titled "Efficient derivation of optimal semaphore schedules for multimodal urban intersections", authored by Nicola Bertocci, Laura Carnevali, Leonardo Scommegna, and Enrico Vicario, currently submitted to the IEEE Transactions on Intelligent Transportation Systems.
 
 The approach combines a microscopic model of tram traffic and a macroscopic model of road transport flows:
 - The microscopic model of tram traffic is defined in terms of Stochastic Time Petri Nets (STPNs) capturing periodic tram departures as well as bounded delays and travel times with general (i.e., non-Exponential) distribution, thus being open to represent arrival and travel processes estimated from operational data, and it is analyzed to derive the transient probability that the intersection is available for road vehicle.
