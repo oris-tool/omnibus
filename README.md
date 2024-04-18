@@ -6,7 +6,7 @@ The approach is presented in the paper titled "Efficient derivation of optimal s
 
 The approach combines a microscopic model of tram traffic and a macroscopic model of road transport flows:
 - The microscopic model of tram traffic is defined in terms of Stochastic Time Petri Nets (STPNs) capturing periodic tram departures as well as bounded delays and travel times with general (i.e., non-Exponential) distribution, thus being open to represent arrival and travel processes estimated from operational data, and it is analyzed to derive the transient probability that the intersection is available for road vehicle.
-- The macroscopic model of road transport flows is defined in terms of finite-capacity vacation queues with general vacation times determined by the intersection availability, achieving efficiecy in the evaluation of the expected queue size over time.
+- The macroscopic model of road transport flows is defined in terms of finite-capacity vacation queues with general vacation times determined by the intersection availability, achieving efficiency in the evaluation of the expected queue size over time.
 
 The distribution of the expected queue size at multiples of the hyper-period (i.e., the least common multiple of the periods of tram departures and vehicle semaphores) is proved to reach a steady state within a few hyper-periods, so that performing transient analysis from this steady-state distribution for the hyper-period duration is sufficient to characterize the behavior of road transport, enabling derivation of optimal semaphore schedules with time-varying parameters over intervals of arbitrary duration. 
 
