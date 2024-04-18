@@ -15,10 +15,10 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.tramway;
+package org.oristool.omnibus.tram;
 
-import org.oristool.omnibus.crossroad.Obstacle;
-import org.oristool.omnibus.tramway.analysis.GreenProbabilityVisitor;
+import org.oristool.omnibus.intersection.Obstacle;
+import org.oristool.omnibus.tram.analysis.GreenProbabilityVisitor;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

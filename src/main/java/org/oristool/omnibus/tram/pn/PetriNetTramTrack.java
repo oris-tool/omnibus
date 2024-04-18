@@ -15,9 +15,9 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.tramway.pn;
+package org.oristool.omnibus.tram.pn;
 
-import org.oristool.omnibus.tramway.TramTrack;
+import org.oristool.omnibus.tram.TramTrack;
 import org.oristool.petrinet.Marking;
 import org.oristool.petrinet.PetriNet;
 

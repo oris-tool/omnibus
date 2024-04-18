@@ -17,13 +17,13 @@
 
 package org.oristool.omnibus;
 
-import org.oristool.omnibus.crossroad.CarFlow;
+import org.oristool.omnibus.intersection.CarFlow;
 import org.oristool.omnibus.plotter.LineToPlot;
 import org.oristool.omnibus.plotter.PlotUtils;
 import org.oristool.omnibus.plotter.Plotter;
-import org.oristool.omnibus.tramway.TramCrossing;
-import org.oristool.omnibus.tramway.analysis.ParallelGreenProbabilityVisitor;
-import org.oristool.omnibus.tramway.pn.PetriNetTramTrackBuilder;
+import org.oristool.omnibus.tram.TramCrossing;
+import org.oristool.omnibus.tram.analysis.ParallelGreenProbabilityVisitor;
+import org.oristool.omnibus.tram.pn.PetriNetTramTrackBuilder;
 import org.oristool.omnibus.utils.Config;
 
 import java.math.BigDecimal;

@@ -15,10 +15,10 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.tramway.analysis;
+package org.oristool.omnibus.tram.analysis;
 
-import org.oristool.omnibus.tramway.TramLine;
-import org.oristool.omnibus.tramway.pn.PetriNetTramTrack;
+import org.oristool.omnibus.tram.TramLine;
+import org.oristool.omnibus.tram.pn.PetriNetTramTrack;
 
 /**
  * This is an interface for visitors that do analysis on tramways.

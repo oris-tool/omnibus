@@ -17,8 +17,8 @@
 
 package org.oristool.omnibus.utils;
 
-import org.oristool.omnibus.crossroad.CarFlow;
-import org.oristool.omnibus.queue.analysis.QueueAnalyzer;
+import org.oristool.omnibus.intersection.CarFlow;
+import org.oristool.omnibus.vehicle.analysis.QueueAnalyzer;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

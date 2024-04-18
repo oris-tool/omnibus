@@ -17,13 +17,13 @@
 
 package org.oristool.omnibus.bestsempattern;
 
-import org.oristool.omnibus.crossroad.CarFlow;
-import org.oristool.omnibus.crossroad.CarSemaphore;
-
 import java.math.BigDecimal;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
+
+import org.oristool.omnibus.intersection.CarFlow;
+import org.oristool.omnibus.intersection.CarSemaphore;
 
 public abstract class SemAnalyzer implements Callable<Double> {
 

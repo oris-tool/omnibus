@@ -18,9 +18,10 @@
 package org.oristool.omnibus.bestsempattern;
 
 import au.com.bytecode.opencsv.CSVWriter;
-import org.oristool.omnibus.crossroad.CarFlow;
-import org.oristool.omnibus.crossroad.analysis.DTMCSteadyStateAnalyzer;
-import org.oristool.omnibus.queue.analysis.MMSS_QueueAnalyzer;
+
+import org.oristool.omnibus.intersection.CarFlow;
+import org.oristool.omnibus.intersection.analysis.DTMCSteadyStateAnalyzer;
+import org.oristool.omnibus.vehicle.analysis.MMSS_QueueAnalyzer;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

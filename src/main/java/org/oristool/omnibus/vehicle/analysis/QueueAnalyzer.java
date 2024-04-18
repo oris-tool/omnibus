@@ -15,16 +15,36 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.queue.analysis;
+package org.oristool.omnibus.vehicle.analysis;
 
-import org.oristool.omnibus.queue.BaseQueue;
+import org.oristool.math.function.EXP;
+import org.oristool.omnibus.vehicle.BaseQueue;
 
 import java.math.BigDecimal;
 
 /**
  * This is an analyzer for queues, based on differential equations.
  */
-public class MMSS_QueueAnalyzer extends QueueAnalyzer {
+public class QueueAnalyzer {
+
+    protected BaseQueue queue;
+
+    protected double[] availability;
+    protected double timeStep;
+    protected int maxDenials;
+
+    protected double[][][] stateMatrix;
+
+    protected void checkLegality() {
+        queue.checkLegality();
+        if (getAvailability() == null)
+            throw new IllegalStateException("Disponibilità non specificata per la coda.");
+        if (getTimeStep() <= 0)
+            throw new IllegalStateException("TimeStep non specificato per l'analisi.");
+        if (getMaxDenials() < 0)
+            throw new IllegalStateException(
+                    "Il massimo numero di rigetti, maxDenials, deve essere maggiore o uguale a zero.");
+    }
 
     /**
      * This is the real analyzer. It receives the queue, the array of the
@@ -37,8 +57,8 @@ public class MMSS_QueueAnalyzer extends QueueAnalyzer {
      * @param timeStep     the temporal resolution
      * @return the QueueAnalyzer itself, to allow iterative calls
      */
-    public MMSS_QueueAnalyzer analyze(BaseQueue queue, double[] availability, double timeStep) {
-        return analyze(queue, availability, 0, timeStep);
+    public QueueAnalyzer analyze(BaseQueue queue, double[] availability, double timeStep) {
+        return this.analyze(queue, availability, 0, timeStep);
     }
 
     /**
@@ -53,7 +73,7 @@ public class MMSS_QueueAnalyzer extends QueueAnalyzer {
      * @param timeStep     the temporal resolution
      * @return the QueueAnalyzer itself, to allow iterative calls
      */
-    public MMSS_QueueAnalyzer analyze(BaseQueue queue, double[] availability, int maxDenials, double timeStep) {
+    public QueueAnalyzer analyze(BaseQueue queue, double[] availability, int maxDenials, double timeStep) {
         this.queue = queue.getClone();
         this.availability = availability;
         this.timeStep = timeStep;
@@ -82,16 +102,16 @@ public class MMSS_QueueAnalyzer extends QueueAnalyzer {
 
                 // Case n = 0
                 stateMatrix[t][0][d] = stateMatrix[t - 1][0][d]
-                        + stateMatrix[t - 1][1][d] * getAvailability()[t - 1] * pService // * 1
+                        + stateMatrix[t - 1][1][d] * getAvailability()[t - 1] * pService
                         - stateMatrix[t - 1][0][d] * pArrival;
                 sum += stateMatrix[t][0][d];
 
                 // Case n in [1, QUEUE_SIZE -1]
                 for (int n = 1; n < queueSize; n++) {
                     stateMatrix[t][n][d] = stateMatrix[t - 1][n][d]
-                            + stateMatrix[t - 1][n + 1][d] * getAvailability()[t - 1] * pService * (n+1)
+                            + stateMatrix[t - 1][n + 1][d] * getAvailability()[t - 1] * pService
                             + stateMatrix[t - 1][n - 1][d] * pArrival
-                            - stateMatrix[t - 1][n][d] * getAvailability()[t - 1] * pService * n
+                            - stateMatrix[t - 1][n][d] * getAvailability()[t - 1] * pService
                             - stateMatrix[t - 1][n][d] * pArrival;
 
                     sum += stateMatrix[t][n][d];
@@ -103,13 +123,13 @@ public class MMSS_QueueAnalyzer extends QueueAnalyzer {
                     if (d == 0) {
                         stateMatrix[t][queueSize][0] = stateMatrix[t - 1][queueSize][0]
                                 + stateMatrix[t - 1][queueSize - 1][0] * pArrival
-                                - stateMatrix[t - 1][queueSize][0] * getAvailability()[t - 1] * pService * queueSize
+                                - stateMatrix[t - 1][queueSize][0] * getAvailability()[t - 1] * pService
                                 - stateMatrix[t - 1][queueSize][0] * pArrival;
 
                     } else { // d > 0 && d != maxDenials
                         stateMatrix[t][queueSize][d] = stateMatrix[t - 1][queueSize][d]
                                 + stateMatrix[t - 1][queueSize - 1][d] * pArrival
-                                - stateMatrix[t - 1][queueSize][d] * getAvailability()[t - 1] * pService * queueSize
+                                - stateMatrix[t - 1][queueSize][d] * getAvailability()[t - 1] * pService
                                 + stateMatrix[t - 1][queueSize][d - 1] * pArrival
                                 - stateMatrix[t - 1][queueSize][d] * pArrival;
                     }
@@ -117,11 +137,11 @@ public class MMSS_QueueAnalyzer extends QueueAnalyzer {
                     if (d == 0) {
                         stateMatrix[t][queueSize][0] = stateMatrix[t - 1][queueSize][0]
                                 + stateMatrix[t - 1][queueSize - 1][0] * pArrival
-                                - stateMatrix[t - 1][queueSize][0] * getAvailability()[t - 1] * pService * queueSize;
+                                - stateMatrix[t - 1][queueSize][0] * getAvailability()[t - 1] * pService;
                     } else {
                         stateMatrix[t][queueSize][d] = stateMatrix[t - 1][queueSize][d]
                                 + stateMatrix[t - 1][queueSize - 1][d] * pArrival
-                                - stateMatrix[t - 1][queueSize][d] * getAvailability()[t - 1] * pService * queueSize
+                                - stateMatrix[t - 1][queueSize][d] * getAvailability()[t - 1] * pService
                                 + stateMatrix[t - 1][queueSize][d - 1] * pArrival;
                     }
                 }
@@ -131,8 +151,7 @@ public class MMSS_QueueAnalyzer extends QueueAnalyzer {
                 for (int i = 0; i <= queueSize; i++) {
                     if (stateMatrix[t][i][d] < 0 || stateMatrix[t][i][d] > 1) {
                         throw new IllegalArgumentException(
-                                "Probability out of bounds results. Please, try with a lower timeStep. "
-                                + " [t, i, d] -> [" + t + ", " + i + ", " + d + "] = " + stateMatrix[t][i][d]);
+                                "Probability out of bounds results. Please, try with a lower timeStep.");
                     }
                 }
             }
@@ -148,4 +167,49 @@ public class MMSS_QueueAnalyzer extends QueueAnalyzer {
         return this;
     }
 
+    protected static double taylorFirstOrderExpansion(EXP function, double value) {
+        return function.getLambda().multiply(new BigDecimal(value)).doubleValue();
+    }
+
+    /**
+     * This returns a matrix that is the results of computed differential equations.
+     *
+     * @return the state probabilities along time, with denials
+     */
+    public double[][][] getStateMatrix() {
+        return stateMatrix;
+    }
+
+    /**
+     * This returns the states probabilities along time without taking care of denials.
+     *
+     * @return the state probabilities along time
+     */
+    public double[][] getStateProbabilitiesAlongTime() {
+        double[][] stateProbabilitiesAlongTime =
+                new double[this.getAvailability().length]
+                        [this.queue.getSize().intValue() + 1];
+
+        for (int i = 0; i < this.getAvailability().length; i++) {
+            for (int j = 0; j <= this.queue.getSize().intValue(); j++) {
+                for (int d = 0; d <= maxDenials; d++) {
+                    stateProbabilitiesAlongTime[i][j] += this.stateMatrix[i][j][d];
+                }
+            }
+        }
+
+        return stateProbabilitiesAlongTime;
+    }
+
+    protected double[] getAvailability() {
+        return availability;
+    }
+
+    protected double getTimeStep() {
+        return timeStep;
+    }
+
+    protected int getMaxDenials() {
+        return maxDenials;
+    }
 }

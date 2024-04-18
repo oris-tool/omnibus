@@ -15,7 +15,7 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.tramway.pn;
+package org.oristool.omnibus.tram.pn;
 
 import java.math.BigInteger;
 

@@ -15,9 +15,9 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.tramway;
+package org.oristool.omnibus.tram;
 
-import org.oristool.omnibus.tramway.analysis.TramWayVisitor;
+import org.oristool.omnibus.tram.analysis.TramWayVisitor;
 import org.oristool.omnibus.utils.OmnibusMath;
 
 import java.math.BigInteger;

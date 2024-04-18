@@ -18,20 +18,21 @@
 package org.oristool.omnibus;
 
 import au.com.bytecode.opencsv.CSVWriter;
-import org.oristool.omnibus.crossroad.CarFlow;
-import org.oristool.omnibus.crossroad.analysis.DTMCSteadyStateAnalyzer;
+
+import org.oristool.omnibus.intersection.CarFlow;
+import org.oristool.omnibus.intersection.analysis.DTMCSteadyStateAnalyzer;
 import org.oristool.omnibus.plotter.LineToPlot;
 import org.oristool.omnibus.plotter.PlotUtils;
 import org.oristool.omnibus.plotter.Plotter;
-import org.oristool.omnibus.queue.BaseQueueBuilder;
-import org.oristool.omnibus.queue.analysis.MMSS_QueueAnalyzer;
-import org.oristool.omnibus.queue.analysis.QueueAnalyzer;
-import org.oristool.omnibus.tramway.TramCrossing;
-import org.oristool.omnibus.tramway.analysis.ParallelGreenProbabilityVisitor;
-import org.oristool.omnibus.tramway.pn.PetriNetTramTrackBuilder;
+import org.oristool.omnibus.tram.TramCrossing;
+import org.oristool.omnibus.tram.analysis.ParallelGreenProbabilityVisitor;
+import org.oristool.omnibus.tram.pn.PetriNetTramTrackBuilder;
 import org.oristool.omnibus.utils.CSV_IOUtils;
 import org.oristool.omnibus.utils.Config;
 import org.oristool.omnibus.utils.QueueAnalyser;
+import org.oristool.omnibus.vehicle.BaseQueueBuilder;
+import org.oristool.omnibus.vehicle.analysis.MMSS_QueueAnalyzer;
+import org.oristool.omnibus.vehicle.analysis.QueueAnalyzer;
 
 import java.io.IOException;
 import java.math.BigDecimal;

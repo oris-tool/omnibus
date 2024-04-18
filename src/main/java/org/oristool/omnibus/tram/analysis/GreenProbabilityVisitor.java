@@ -15,12 +15,12 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.tramway.analysis;
-
-import org.oristool.omnibus.tramway.TramWay;
+package org.oristool.omnibus.tram.analysis;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+
+import org.oristool.omnibus.tram.TramWay;
 
 /**
  * This abstract class provides an interface for visitors that compute the

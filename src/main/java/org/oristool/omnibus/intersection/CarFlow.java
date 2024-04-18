@@ -15,12 +15,12 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.crossroad;
+package org.oristool.omnibus.intersection;
 
-import org.oristool.omnibus.crossroad.analysis.SteadyStateAnalyzer;
-import org.oristool.omnibus.queue.BaseQueue;
-import org.oristool.omnibus.queue.analysis.QueueAnalyzer;
+import org.oristool.omnibus.intersection.analysis.SteadyStateAnalyzer;
 import org.oristool.omnibus.utils.OmnibusMath;
+import org.oristool.omnibus.vehicle.BaseQueue;
+import org.oristool.omnibus.vehicle.analysis.QueueAnalyzer;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

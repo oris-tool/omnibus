@@ -15,7 +15,7 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.queue;
+package org.oristool.omnibus.vehicle;
 
 import org.oristool.math.function.EXP;
 

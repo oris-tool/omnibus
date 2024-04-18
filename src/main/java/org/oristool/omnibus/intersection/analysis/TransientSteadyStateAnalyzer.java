@@ -15,14 +15,15 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.crossroad.analysis;
+package org.oristool.omnibus.intersection.analysis;
 
 import cern.colt.matrix.DoubleMatrix2D;
 import cern.colt.matrix.impl.DenseDoubleMatrix2D;
 import cern.colt.matrix.linalg.Algebra;
 import cern.jet.math.Functions;
-import org.oristool.omnibus.crossroad.CarFlow;
-import org.oristool.omnibus.queue.analysis.QueueAnalyzer;
+
+import org.oristool.omnibus.intersection.CarFlow;
+import org.oristool.omnibus.vehicle.analysis.QueueAnalyzer;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

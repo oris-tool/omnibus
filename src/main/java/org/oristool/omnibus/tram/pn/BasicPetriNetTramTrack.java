@@ -15,12 +15,12 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.tramway.pn;
+package org.oristool.omnibus.tram.pn;
 
 import org.oristool.models.pn.Priority;
 import org.oristool.models.stpn.MarkingExpr;
 import org.oristool.models.stpn.trees.StochasticTransitionFeature;
-import org.oristool.omnibus.tramway.analysis.TramWayVisitor;
+import org.oristool.omnibus.tram.analysis.TramWayVisitor;
 import org.oristool.petrinet.Marking;
 import org.oristool.petrinet.PetriNet;
 import org.oristool.petrinet.Place;

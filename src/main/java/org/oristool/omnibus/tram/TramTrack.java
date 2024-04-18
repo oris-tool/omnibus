@@ -15,7 +15,7 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.tramway;
+package org.oristool.omnibus.tram;
 
 /**
  * This represent the concept of tram binary.

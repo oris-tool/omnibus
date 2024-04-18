@@ -15,7 +15,7 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.crossroad;
+package org.oristool.omnibus.intersection;
 
 import java.math.BigInteger;
 

@@ -22,7 +22,7 @@ import org.oristool.omnibus.bestsempattern.MinMaxOccupationSemAnalyzer;
 import org.oristool.omnibus.bestsempattern.ScenarioDefiner;
 import org.oristool.omnibus.bestsempattern.SemPatternGenerator;
 import org.oristool.omnibus.bestsempattern.VehicleFlow;
-import org.oristool.omnibus.crossroad.CarFlow;
+import org.oristool.omnibus.intersection.CarFlow;
 
 import java.io.File;
 import java.io.FileWriter;

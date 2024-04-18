@@ -17,10 +17,10 @@
 
 package org.oristool.omnibus.bestsempattern;
 
-import org.oristool.omnibus.crossroad.CarSemaphore;
-
 import java.math.BigInteger;
 import java.util.Arrays;
+
+import org.oristool.omnibus.intersection.CarSemaphore;
 
 public class Utils {
 

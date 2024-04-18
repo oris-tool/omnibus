@@ -15,11 +15,11 @@
   * along with this program.  If not, see <https://www.gnu.org/licenses/>.
   */
 
-package org.oristool.omnibus.tramway;
-
-import org.oristool.omnibus.tramway.analysis.TramWayVisitor;
+package org.oristool.omnibus.tram;
 
 import java.math.BigInteger;
+
+import org.oristool.omnibus.tram.analysis.TramWayVisitor;
 
 /**
  * It provides an interface for the tramway, that could be a single track or a
