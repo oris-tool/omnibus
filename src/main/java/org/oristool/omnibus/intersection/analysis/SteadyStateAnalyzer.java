@@ -19,7 +19,7 @@ package org.oristool.omnibus.intersection.analysis;
 
 import org.oristool.omnibus.intersection.CarFlow;
 import org.oristool.omnibus.vehicle.BaseQueue;
-import org.oristool.omnibus.vehicle.analysis.QueueAnalyzer;
+import org.oristool.omnibus.vehicle.analysis.TransientAnalyzer;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -40,9 +40,9 @@ public abstract class SteadyStateAnalyzer {
 	 * @return the steady state distribution of the length of the queue at the
 	 *         beginning of each period
 	 */
-	public abstract double[] getSteadyStateDistribution(CarFlow carFlow, QueueAnalyzer analyzer, BigDecimal timeStep);
+	public abstract double[] getSteadyStateDistribution(CarFlow carFlow, TransientAnalyzer analyzer, BigDecimal timeStep);
 
-	protected double[][] getPkjMatrix(CarFlow carFlow, QueueAnalyzer analyzer, BigDecimal timeStep) {
+	protected double[][] getPkjMatrix(CarFlow carFlow, TransientAnalyzer analyzer, BigDecimal timeStep) {
 		int hyperPeriod = carFlow.getObstaclesHyperPeriod();
 		int hyperPeriodStep = new BigDecimal(hyperPeriod).divide(timeStep).intValue() + 1;
 

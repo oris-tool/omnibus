@@ -32,7 +32,7 @@ import org.oristool.omnibus.utils.Config;
 import org.oristool.omnibus.utils.QueueAnalyser;
 import org.oristool.omnibus.vehicle.BaseQueueBuilder;
 import org.oristool.omnibus.vehicle.analysis.MMSS_QueueAnalyzer;
-import org.oristool.omnibus.vehicle.analysis.QueueAnalyzer;
+import org.oristool.omnibus.vehicle.analysis.TransientAnalyzer;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -103,7 +103,7 @@ public class Figure5and6Experiment {
         mmkkExpectedCarsAlongTimeTransient = Arrays.copyOfRange(mmkkExpectedCarsAlongTimeTransient, 0, mmkkExpectedCarsAlongTimeTransient.length);
 
         mm1kCarFlow.getQueue().setInitialElements(BigInteger.ZERO);
-        double[] mm1kExpectedCarsAlongTimeTransient = QueueAnalyser.makeAnalysis(mm1kCarFlow, new QueueAnalyzer(), "MM1K");
+        double[] mm1kExpectedCarsAlongTimeTransient = QueueAnalyser.makeAnalysis(mm1kCarFlow, new TransientAnalyzer(), "MM1K");
         mm1kExpectedCarsAlongTimeTransient = Arrays.copyOfRange(mm1kExpectedCarsAlongTimeTransient, 0, mm1kExpectedCarsAlongTimeTransient.length);
 
         ArrayList<LineToPlot> linesToPlot1 = new ArrayList<>();
@@ -127,7 +127,7 @@ public class Figure5and6Experiment {
         mmkkCarFlow.analyzeSteadyStateDistribution(new DTMCSteadyStateAnalyzer(), new MMSS_QueueAnalyzer(),
                 Config.timeStep);
 
-        mm1kCarFlow.analyzeSteadyStateDistribution(new DTMCSteadyStateAnalyzer(), new QueueAnalyzer(),
+        mm1kCarFlow.analyzeSteadyStateDistribution(new DTMCSteadyStateAnalyzer(), new TransientAnalyzer(),
                 Config.timeStep);
 
         double[] mmkkSteadyStateDistributionD = mmkkCarFlow.getSteadyStateDistribution();
@@ -171,7 +171,7 @@ public class Figure5and6Experiment {
                 mmkkExpectedCarsAlongTimeSteadyState.length);
 
         mm1kCarFlow.getQueue().setInitialDistribution(mm1kSteadyStateDistribution);
-        double[] mm1kExpectedCarsAlongTimeSteadyState = QueueAnalyser.makeAnalysis(mm1kCarFlow, new QueueAnalyzer(), "MM1K");
+        double[] mm1kExpectedCarsAlongTimeSteadyState = QueueAnalyser.makeAnalysis(mm1kCarFlow, new TransientAnalyzer(), "MM1K");
         mm1kExpectedCarsAlongTimeSteadyState = Arrays.copyOfRange(mm1kExpectedCarsAlongTimeSteadyState, cutStep,
                 mm1kExpectedCarsAlongTimeSteadyState.length);
 

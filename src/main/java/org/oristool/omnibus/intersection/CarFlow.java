@@ -20,7 +20,7 @@ package org.oristool.omnibus.intersection;
 import org.oristool.omnibus.intersection.analysis.SteadyStateAnalyzer;
 import org.oristool.omnibus.utils.OmnibusMath;
 import org.oristool.omnibus.vehicle.BaseQueue;
-import org.oristool.omnibus.vehicle.analysis.QueueAnalyzer;
+import org.oristool.omnibus.vehicle.analysis.TransientAnalyzer;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -119,7 +119,7 @@ public class CarFlow {
      * @param timeStep  the temporal resolution with which the analysis will be done
      * @return the object itself, to allows iterative calls
      */
-    public CarFlow analyzeQueue(QueueAnalyzer analyzer, BigInteger timeBound, BigDecimal timeStep) {
+    public CarFlow analyzeQueue(TransientAnalyzer analyzer, BigInteger timeBound, BigDecimal timeStep) {
         return analyzeQueueWithDenials(analyzer, 0, timeBound, timeStep);
     }
 
@@ -133,7 +133,7 @@ public class CarFlow {
      * @param timeStep   the temporal resolution with which the analysis will be done
      * @return the object itself, to allows iterative calls
      */
-    public CarFlow analyzeQueueWithDenials(QueueAnalyzer analyzer, int maxDenials, BigInteger timeBound, BigDecimal timeStep) {
+    public CarFlow analyzeQueueWithDenials(TransientAnalyzer analyzer, int maxDenials, BigInteger timeBound, BigDecimal timeStep) {
         isInitialized();
 
         this.maxDenials = maxDenials;
@@ -156,7 +156,7 @@ public class CarFlow {
      *                            will be done
      * @return the object itself, to allows iterative calls
      */
-    public CarFlow analyzeSteadyStateDistribution(SteadyStateAnalyzer steadyStateAnalyzer, QueueAnalyzer queueAnalyzer,
+    public CarFlow analyzeSteadyStateDistribution(SteadyStateAnalyzer steadyStateAnalyzer, TransientAnalyzer queueAnalyzer,
                                                   BigDecimal timeStep) {
         isInitialized();
 

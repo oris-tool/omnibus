@@ -30,7 +30,7 @@ import org.oristool.omnibus.utils.Config;
 import org.oristool.omnibus.utils.QueueAnalyser;
 import org.oristool.omnibus.vehicle.BaseQueueBuilder;
 import org.oristool.omnibus.vehicle.analysis.MMSS_QueueAnalyzer;
-import org.oristool.omnibus.vehicle.analysis.QueueAnalyzer;
+import org.oristool.omnibus.vehicle.analysis.TransientAnalyzer;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -132,7 +132,7 @@ public class SingleTestLauncher {
         mmkkExpectedCarsAlongTime = Arrays.copyOfRange(mmkkExpectedCarsAlongTime, cutStep,
                 mmkkExpectedCarsAlongTime.length);
 
-        double[] mm1kExpectedCarsAlongTime = QueueAnalyser.makeAnalysis(mm1kCarFlow, new QueueAnalyzer(), "MM1K");
+        double[] mm1kExpectedCarsAlongTime = QueueAnalyser.makeAnalysis(mm1kCarFlow, new TransientAnalyzer(), "MM1K");
         mm1kExpectedCarsAlongTime = Arrays.copyOfRange(mm1kExpectedCarsAlongTime, cutStep,
                 mm1kExpectedCarsAlongTime.length);
 

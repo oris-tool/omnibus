@@ -24,7 +24,7 @@ import org.oristool.omnibus.vehicle.BaseQueue;
 /**
  * This is an analyzer for queues, based on differential equations.
  */
-public class MMSS_QueueAnalyzer extends QueueAnalyzer {
+public class MMSS_QueueAnalyzer extends TransientAnalyzer {
 
     /**
      * This is the real analyzer. It receives the queue, the array of the

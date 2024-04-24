@@ -18,14 +18,14 @@
 package org.oristool.omnibus.utils;
 
 import org.oristool.omnibus.intersection.CarFlow;
-import org.oristool.omnibus.vehicle.analysis.QueueAnalyzer;
+import org.oristool.omnibus.vehicle.analysis.TransientAnalyzer;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class QueueAnalyser {
 
-	public static double[] makeAnalysis(CarFlow cf, QueueAnalyzer qa, String analysisType) {
+	public static double[] makeAnalysis(CarFlow cf, TransientAnalyzer qa, String analysisType) {
 		double[] expectedStateAlongTime = null;
 		boolean exception = false;
 		BigDecimal timeStep = Config.timeStep;

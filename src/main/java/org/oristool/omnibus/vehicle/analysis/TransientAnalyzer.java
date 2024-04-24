@@ -25,7 +25,7 @@ import java.math.BigDecimal;
 /**
  * This is an analyzer for queues, based on differential equations.
  */
-public class QueueAnalyzer {
+public class TransientAnalyzer {
 
     protected BaseQueue queue;
 
@@ -57,7 +57,7 @@ public class QueueAnalyzer {
      * @param timeStep     the temporal resolution
      * @return the QueueAnalyzer itself, to allow iterative calls
      */
-    public QueueAnalyzer analyze(BaseQueue queue, double[] availability, double timeStep) {
+    public TransientAnalyzer analyze(BaseQueue queue, double[] availability, double timeStep) {
         return this.analyze(queue, availability, 0, timeStep);
     }
 
@@ -73,7 +73,7 @@ public class QueueAnalyzer {
      * @param timeStep     the temporal resolution
      * @return the QueueAnalyzer itself, to allow iterative calls
      */
-    public QueueAnalyzer analyze(BaseQueue queue, double[] availability, int maxDenials, double timeStep) {
+    public TransientAnalyzer analyze(BaseQueue queue, double[] availability, int maxDenials, double timeStep) {
         this.queue = queue.getClone();
         this.availability = availability;
         this.timeStep = timeStep;

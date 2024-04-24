@@ -23,7 +23,7 @@ import cern.colt.matrix.linalg.Algebra;
 import cern.jet.math.Functions;
 
 import org.oristool.omnibus.intersection.CarFlow;
-import org.oristool.omnibus.vehicle.analysis.QueueAnalyzer;
+import org.oristool.omnibus.vehicle.analysis.TransientAnalyzer;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -33,6 +33,7 @@ import java.math.BigInteger;
  * queue at the beginning of each period in a transient way. It's a little bit
  * faster than DTMCSteadyStateAnalyzer but can be vague.
  */
+@Deprecated
 public class TransientSteadyStateAnalyzer extends SteadyStateAnalyzer {
 
 	private double epsilon = 0.00001;
@@ -48,7 +49,7 @@ public class TransientSteadyStateAnalyzer extends SteadyStateAnalyzer {
 	}
 
 	@Override
-	public double[] getSteadyStateDistribution(CarFlow carFlow, QueueAnalyzer analyzer, BigDecimal timeStep) {
+	public double[] getSteadyStateDistribution(CarFlow carFlow, TransientAnalyzer analyzer, BigDecimal timeStep) {
 		double[][] pkjMatrix = this.getPkjMatrix(carFlow, analyzer, timeStep);
 
 		DoubleMatrix2D matrix = new DenseDoubleMatrix2D(carFlow.getQueue().getSize().add(BigInteger.ONE).intValue(),

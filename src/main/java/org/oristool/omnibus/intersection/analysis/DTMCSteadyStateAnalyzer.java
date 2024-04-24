@@ -22,7 +22,7 @@ import com.google.common.graph.ValueGraphBuilder;
 import org.oristool.models.gspn.chains.DTMCStationary;
 import org.oristool.models.gspn.chains.DTMCStationary.Builder;
 import org.oristool.omnibus.intersection.CarFlow;
-import org.oristool.omnibus.vehicle.analysis.QueueAnalyzer;
+import org.oristool.omnibus.vehicle.analysis.TransientAnalyzer;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -36,7 +36,7 @@ import java.util.Map;
 public class DTMCSteadyStateAnalyzer extends SteadyStateAnalyzer {
 
 	@Override
-	public double[] getSteadyStateDistribution(CarFlow carFlow, QueueAnalyzer analyzer, BigDecimal timeStep) {
+	public double[] getSteadyStateDistribution(CarFlow carFlow, TransientAnalyzer analyzer, BigDecimal timeStep) {
 		double[][] pkjMatrix = this.getPkjMatrix(carFlow, analyzer, timeStep);
 
 		Map<Integer, QueueState> states = new HashMap<>();
