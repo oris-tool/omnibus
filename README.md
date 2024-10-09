@@ -1,3 +1,9 @@
+
+
+[![DOI](https://zenodo.org/badge/580339339.svg)](https://doi.org/10.5281/zenodo.13907732)
+
+
+
 # Omnibus Library
 
 This repository provides Omnibus, a Java library implementing an efficient compositional approach to derive optimal semaphore schedules for multimodal urban intersections among road traffic flows and tram lines with right of way, minimizing the expected percentage of queued vehicles of each flow.
